@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
+import { ModalComponent } from './modal/modal.component';
+import { ModalEmployeeDetailComponent } from './modal-employee-detail/modal-employee-detail.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 const appRoutes: Routes = [
   {
@@ -38,7 +41,9 @@ const appRoutes: Routes = [
     AppComponent,
     EmployeeComponent,
     EmployeeDetailComponent,
-    EmployeeCreateComponent
+    EmployeeCreateComponent,
+    ModalComponent,
+    ModalEmployeeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +52,13 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: true} // debugging only
-    )
+    ),
+    NgbModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalEmployeeDetailComponent
+  ]
 })
 export class AppModule { }

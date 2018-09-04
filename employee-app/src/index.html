@@ -51,6 +51,15 @@
   </nav>
   <div class="boilerplate">
     <app-root></app-root>
+    <modal id="custom-modal-1">
+      <div class="modal">
+        <div class="modal-body">
+          <h1>A Custom Modal!</h1>
+          <button (click)="closeModal('custom-modal-1');">Close</button>
+        </div>
+      </div>
+      <div class="modal-background"></div>
+    </modal>
   </div>
   <!-- Minified BS JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

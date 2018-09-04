@@ -3,15 +3,21 @@ README
 -------------------
 
 - When pulling from Git...
- 1. Have intelliJ up to date
- 2. Have mongo installed
- 3. Have NodeJS installed
- 4. Have the mongo and NodeJS plugins installed
- 5. Run: npm install -g @angular/cli (just in case)
- 6. Run: ng new portal-app
- 7. SPOT Check: npm install (just for peace of mind)
+    1. Have intelliJ up to date
+    2. Have mongo installed
+    3. Have NodeJS installed
+    4. Have the mongo and NodeJS plugins installed for intellij
+
+SPOT Check: npm install (peace of mind)
+    1. Check npm version
+    2. Ensure angular/cli is installed
+    3. Ensure ng-bootstrap is GTG
 
 Once complete...
- 1. cd to the built frontend (angular)
- 2. CMD: ng server
- 3. Web browser: localhost:4200
+    1. cd to the built frontend (angular)
+    2. CMD: ng build
+    3. Web browser: localhost:4200
+
+RXJS Fix:
+ - npm install rxjs-compat
+ - added
