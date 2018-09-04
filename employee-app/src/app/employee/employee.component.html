@@ -12,17 +12,16 @@
       </thead>
       <tbody>
       <tr *ngFor="let employee of employees">
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.name }}</td>
+        <td><a [routerLink]="['/employee-detail', employee.id]">{{ employee.name }}</a></td>
         <td>{{ employee.address }}</td>
         <td>{{ employee.city }}</td>
-        <td><a [routerLink]="['/employee-detail', employee.id]">Details</a></td>
+        <td><a [routerLink]="['/employee-detail', employee.id]">Update</a></td>
       </tr>
       </tbody>
     </table>
   </div>
   <div id="emplActions">
-    <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
+    <button class="btn btn-lg btn-outline-primary" (click)="open()">Create New Employee</button>
     <!--
     <a [routerLink]="['/employee-create']" class="btn btn-default btn-lg">Create New Employee
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

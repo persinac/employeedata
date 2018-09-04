@@ -12,6 +12,8 @@ import { EmployeeCreateComponent } from './employee-create/employee-create.compo
 import { ModalComponent } from './modal/modal.component';
 import { ModalEmployeeDetailComponent } from './modal-employee-detail/modal-employee-detail.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { ModalEmployeeUpdateComponent } from './modal-employee-update/modal-employee-update.component';
+import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
 
 const appRoutes: Routes = [
   {
@@ -43,7 +45,9 @@ const appRoutes: Routes = [
     EmployeeDetailComponent,
     EmployeeCreateComponent,
     ModalComponent,
-    ModalEmployeeDetailComponent
+    ModalEmployeeDetailComponent,
+    ModalEmployeeUpdateComponent,
+    EmployeeUpdateComponent
   ],
   imports: [
     BrowserModule,

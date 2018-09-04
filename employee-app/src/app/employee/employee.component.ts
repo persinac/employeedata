@@ -4,6 +4,7 @@ import {Globals} from '../globals';
 import { ModalComponent } from '../modal/modal.component';
 import { ModalEmployeeDetailComponent } from '../modal-employee-detail/modal-employee-detail.component';
 import {NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import {ModalEmployeeUpdateComponent} from "../modal-employee-update/modal-employee-update.component";
 
 @Component({
   selector: 'app-employee',
@@ -27,5 +28,10 @@ export class EmployeeComponent implements OnInit {
     const modalRef = this.modalService.open(ModalEmployeeDetailComponent);
     modalRef.componentInstance.title = 'New Employee';
   }
+
+  // open(id) {
+  //   const modalRef = this.modalService.open(ModalEmployeeUpdateComponent);
+  //   modalRef.componentInstance.title = 'Update Employee';
+  // }
 
 }
