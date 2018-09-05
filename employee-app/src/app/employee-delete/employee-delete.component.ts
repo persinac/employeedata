@@ -23,10 +23,18 @@ export class EmployeeDeleteComponent implements OnInit {
 
   ngOnInit() {
     this.selectedEmplId = this.modalSrvc.getSelectedId();
+    this.getEmployee(Globals.BASE_API_URL, this.selectedEmplId);
   }
 
-  deleteEmployee(id) {
-    this.http.delete(Globals.BASE_API_URL + '/api/employees/' + id)
+  getEmployee(baseAPIURL, id) {
+    this.http.get(baseAPIURL + '/api/employees/' + id).subscribe(
+      data => {
+        this.employeeToDelete = data;
+      });
+  }
+
+  deleteEmployee() {
+    this.http.delete(Globals.BASE_API_URL + '/api/employees/' + this.selectedEmplId)
       .subscribe(res => {
           let id = res['id'];
           this.router.navigate(['/employees', id]);
@@ -36,6 +44,10 @@ export class EmployeeDeleteComponent implements OnInit {
       );
     this.modalService.close();
     location.reload();
+  }
+
+  closeModal() {
+    this.modalService.close()
   }
 
 }

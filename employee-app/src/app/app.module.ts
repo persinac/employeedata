@@ -68,7 +68,8 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
   entryComponents: [
     ModalEmployeeDetailComponent,
-    ModalEmployeeUpdateComponent
+    ModalEmployeeUpdateComponent,
+    ModalEmployeeDeleteComponent
   ]
 })
 export class AppModule { }

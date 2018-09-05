@@ -6,6 +6,7 @@ import { ModalEmployeeDetailComponent } from '../modal-employee-detail/modal-emp
 import {NgbModal, NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import {ModalEmployeeUpdateComponent} from "../modal-employee-update/modal-employee-update.component";
 import {ModalService} from "../_services";
+import {ModalEmployeeDeleteComponent} from "../modal-employee-delete/modal-employee-delete.component";
 
 @Component({
   selector: 'app-employee',
@@ -40,7 +41,9 @@ export class EmployeeComponent implements OnInit {
   }
 
   deleteSelectedEmployee(id) {
-
+    const modalRef = this.modalService.open(ModalEmployeeDeleteComponent);
+    this.modalSrvc.setSelectedId(id);
+    this.modalSrvc.setToDelete();
   }
 
 }
