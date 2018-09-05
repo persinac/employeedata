@@ -68,9 +68,19 @@ public class EmployeeController {
 
         return emplRepository.findById(id)
                 .map(empData -> {
-                    if(emp.getName() != null) empData.setName(emp.getName());
-                    if(emp.getAddress() != null) empData.setAddress(emp.getAddress());
+                    if(emp.getFirstName() != null) empData.setFirstName(emp.getFirstName());
+                    if(emp.getLastName() != null) empData.setLastName(emp.getLastName());
+                    if(emp.getMiddleInitial() != null) empData.setMiddleInitial(emp.getMiddleInitial());
+                    if(emp.getEmail() != null) empData.setEmail(emp.getEmail());
+                    if(emp.getPhone() != null) empData.setPhone(emp.getPhone());
+                    if(emp.getPositionCategory() != null) empData.setPositionCategory(emp.getPositionCategory());
+                    if(emp.getDateHired() != null) empData.setDateHired(emp.getDateHired());
+                    if(emp.getAddressOne() != null) empData.setAddressOne(emp.getAddressOne());
+                    if(emp.getAddressTwo() != null) empData.setAddressTwo(emp.getAddressTwo());
                     if(emp.getCity() != null) empData.setCity(emp.getCity());
+                    if(emp.getState() != null) empData.setState(emp.getState());
+                    if(emp.getZipCode() != null) empData.setZipCode(emp.getZipCode());
+                    if(emp.getActive() != null) empData.setActive(emp.getActive());
                     Employee updatedEmpl = emplRepository.save(empData);
                     return ResponseEntity.ok().body(updatedEmpl);
                 }).orElse(ResponseEntity.notFound().build());

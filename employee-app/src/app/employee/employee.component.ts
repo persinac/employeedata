@@ -31,12 +31,12 @@ export class EmployeeComponent implements OnInit {
   }
 
   open() {
-    const modalRef = this.modalService.open(ModalEmployeeDetailComponent);
+    const modalRef = this.modalService.open(ModalEmployeeDetailComponent, {size:'lg'});
     modalRef.componentInstance.title = 'New Employee';
   }
 
   openUpdateEmployee(id) {
-    const modalRef = this.modalService.open(ModalEmployeeUpdateComponent);
+    const modalRef = this.modalService.open(ModalEmployeeUpdateComponent, {size:'lg'});
     this.modalSrvc.setSelectedId(id);
   }
 
