@@ -8,6 +8,7 @@
         <th>Address</th>
         <th>City</th>
         <th>Action</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -15,7 +16,8 @@
         <td><a [routerLink]="['/employee-detail', employee.id]">{{ employee.name }}</a></td>
         <td>{{ employee.address }}</td>
         <td>{{ employee.city }}</td>
-        <td><a [routerLink]="['/employee-detail', employee.id]">Update</a></td>
+        <td><button class="btn btn-md btn-link" (click)="openUpdateEmployee(employee.id)">Update</button></td>
+        <td><button class="btn btn-md btn-link" (click)="openUpdateEmployee(employee.id)">Update</button></td>
       </tr>
       </tbody>
     </table>

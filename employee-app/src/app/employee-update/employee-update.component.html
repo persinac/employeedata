@@ -1,8 +1,7 @@
 <div class="container">
-  <h1>Edit Contact</h1>
   <div class="row">
     <div class="col-md-6">
-      <form (ngSubmit)="updateContact(employeeToEdit.id)" #employeeForm="ngForm">
+      <form (ngSubmit)="updateEmployee(employeeToEdit.id, employeeToEdit)" #employeeForm="ngForm">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" [(ngModel)]="employeeToEdit.name" name="name" required>

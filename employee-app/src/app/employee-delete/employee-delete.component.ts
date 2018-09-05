@@ -6,15 +6,14 @@ import {Globals} from '../globals';
 import {ModalService} from "../_services";
 
 @Component({
-  selector: 'app-employee-update',
-  templateUrl: './employee-update.component.html',
-  styleUrls: ['./employee-update.component.css']
+  selector: 'app-employee-delete',
+  templateUrl: './employee-delete.component.html',
+  styleUrls: ['./employee-delete.component.css']
 })
-export class EmployeeUpdateComponent implements OnInit {
+export class EmployeeDeleteComponent implements OnInit {
 
-  employeeToEdit = {};
+  employeeToDelete = {};
   selectedEmplId = 'A';
-
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -24,18 +23,10 @@ export class EmployeeUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.selectedEmplId = this.modalSrvc.getSelectedId();
-    this.getEmployee(Globals.BASE_API_URL, this.selectedEmplId);
   }
 
-  getEmployee(baseAPIURL, id) {
-    this.http.get(baseAPIURL + '/api/employees/' + id).subscribe(
-      data => {
-      this.employeeToEdit = data;
-    });
-  }
-
-  updateEmployee(id, data) {
-    this.http.put(Globals.BASE_API_URL + '/api/employees/' + id, data)
+  deleteEmployee(id) {
+    this.http.delete(Globals.BASE_API_URL + '/api/employees/' + id)
       .subscribe(res => {
           let id = res['id'];
           this.router.navigate(['/employees', id]);
@@ -46,4 +37,5 @@ export class EmployeeUpdateComponent implements OnInit {
     this.modalService.close();
     location.reload();
   }
+
 }

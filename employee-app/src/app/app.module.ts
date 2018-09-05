@@ -14,6 +14,9 @@ import { ModalEmployeeDetailComponent } from './modal-employee-detail/modal-empl
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ModalEmployeeUpdateComponent } from './modal-employee-update/modal-employee-update.component';
 import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
+import {ModalService} from "./_services";
+import { EmployeeDeleteComponent } from './employee-delete/employee-delete.component';
+import { ModalEmployeeDeleteComponent } from './modal-employee-delete/modal-employee-delete.component';
 
 const appRoutes: Routes = [
   {
@@ -47,7 +50,9 @@ const appRoutes: Routes = [
     ModalComponent,
     ModalEmployeeDetailComponent,
     ModalEmployeeUpdateComponent,
-    EmployeeUpdateComponent
+    EmployeeUpdateComponent,
+    EmployeeDeleteComponent,
+    ModalEmployeeDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -59,10 +64,11 @@ const appRoutes: Routes = [
     ),
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [ModalService],
   bootstrap: [AppComponent],
   entryComponents: [
-    ModalEmployeeDetailComponent
+    ModalEmployeeDetailComponent,
+    ModalEmployeeUpdateComponent
   ]
 })
 export class AppModule { }

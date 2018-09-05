@@ -1,25 +1,28 @@
+import {EventEmitter, Injectable, Output} from "@angular/core";
+
+@Injectable()
 export class ModalService {
-  private modals: any[] = [];
+  selectedEmpId = '';
+  toDelete = false;
 
-  add(modal: any) {
-    // add modal to array of active modals
-    this.modals.push(modal);
+  setSelectedId(id) {
+    console.log("Setting ID");
+    this.selectedEmpId = id;
+    console.log("ID set to: " + this.selectedEmpId);
   }
 
-  remove(id: string) {
-    // remove modal from array of active modals
-    this.modals = this.modals.filter(x => x.id !== id);
+  getSelectedId() {
+    return this.selectedEmpId;
   }
 
-  open(id: string) {
-    // open modal specified by id
-    let modal: any = this.modals.filter(x => x.id === id)[0];
-    modal.open();
+  setToDelete() {
+    console.log("Setting To Delete");
+    this.toDelete = !this.toDelete;
+    console.log("toDelete set to: " + this.toDelete);
   }
 
-  close(id: string) {
-    // close modal specified by id
-    let modal: any = this.modals.filter(x => x.id === id)[0];
-    modal.close();
+  getToDelete() {
+    return this.toDelete;
   }
+
 }
