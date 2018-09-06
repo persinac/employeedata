@@ -12,8 +12,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let employee of employees">
-        <td><a [routerLink]="['/employee-detail', employee.id]"><span>{{ employee.firstName }}</span> <span>{{ employee.lastName }}</span></a></td>
-        <td>{{ employee.address }}</td>
+        <td><a [routerLink]="['/employee-detail', employee.id]">{{ employee.firstName }} {{ employee.lastName }}</a></td>
+        <td>{{ employee.addressOne }}</td>
         <td>{{ employee.city }}</td>
         <td>
           <div class="btn-group" role="group">

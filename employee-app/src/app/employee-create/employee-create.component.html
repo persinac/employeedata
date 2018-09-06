@@ -1,12 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <form class="needs-validation" (ngSubmit)="saveNewEmployee()" #employeeForm="ngForm" novalidate>
+      <form (ngSubmit)="employeeForm.form.valid && saveNewEmployee()" #employeeForm="ngForm" name="employeeForm" novalidate>
         <div class="row">
           <div class="col-md-5">
             <div class="form-group">
               <label for="firstName">First Name *</label>
-              <input type="text" class="form-control" [(ngModel)]="newEmployee.firstName" name="firstName" required>
+              <input type="text" class="form-control" [(ngModel)]="newEmployee.firstName" name="firstName" #firstName="ngModel"
+                     [ngClass]="{ 'is-invalid': email.invalid }"
+                     required
+              />
+              <div *ngIf="employeeForm.submitted && firstName.invalid" class="invalid-feedback">
+                <div *ngIf="firstName.errors.required">First name is required</div>
+              </div>
               <div class="invalid-feedback">
                 Please choose a username.
               </div>
@@ -21,7 +27,14 @@
           <div class="col-md-5">
             <div class="form-group">
               <label for="lastName">Last Name *</label>
-              <input type="text" class="form-control" [(ngModel)]="newEmployee.lastName" name="lastName" required>
+              <input type="text" class="form-control" [(ngModel)]="newEmployee.lastName" name="lastName"
+                     #lastName="ngModel"
+                     [ngClass]="{ 'is-invalid': email.invalid }"
+                     required
+              />
+              <div *ngIf="employeeForm.submitted && lastName.invalid" class="invalid-feedback">
+                <div *ngIf="lastName.errors.required">Last name is required</div>
+              </div>
             </div>
           </div>
         </div>
@@ -29,13 +42,29 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="email">Email Address *</label>
-              <input type="text" class="form-control" [(ngModel)]="newEmployee.email" name="email" required>
+              <input type="text" class="form-control" [(ngModel)]="newEmployee.email"
+                     name="email" #email="ngModel"
+                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                     [ngClass]="{ 'is-invalid': email.invalid }"
+                     required />
+
+              <div *ngIf="employeeForm.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="employeeForm.email.$touched && email.errors.email">Email must be a valid email address</div>
+              </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="phone">Phone Number</label>
-              <input type="text" class="form-control" [(ngModel)]="newEmployee.phoneNumber" name="phone">
+              <input type="text" class="form-control" [(ngModel)]="newEmployee.phoneNumber"
+                     name="phone" #phone="ngModel"
+                     pattern="^[0-9]+"
+                     [ngClass]="{ 'is-invalid': phone.invalid }"
+                     />
+              <div *ngIf="employeeForm.submitted && phone.invalid" class="invalid-feedback">
+                <div *ngIf="phone.errors.pattern">Please only enter numbers</div>
+              </div>
             </div>
           </div>
         </div>
@@ -77,19 +106,41 @@
           <div class="col-md-4">
             <div class="form-group">
               <label for="position">Position</label>
-              <input type="text" class="form-control" [(ngModel)]="newEmployee.positionCategory" name="position" >
+              <select class="form-control" [(ngModel)]="newEmployee.positionCategory" name="position">
+                <option value="Indirect">Indirect</option>
+                <option value="Direct">Direct</option>
+                <option value="PM">Program Manager</option>
+                <option value="Director">Director</option>
+                <option value="Executive">Executive</option>
+              </select>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
               <label for="dateHired">Date Hired *</label>
-              <input type="text" class="form-control" [(ngModel)]="newEmployee.dateHired" name="dateHired" required>
+              <input type="text" class="form-control" [(ngModel)]="newEmployee.dateHired"
+                     name="dateHired" #dateHired="ngModel"
+                     [ngClass]="{ 'is-invalid': dateHired.invalid }"
+                     required
+              />
+              <!--<dl-date-time-picker></dl-date-time-picker>-->
+              <div *ngIf="employeeForm.submitted && dateHired.invalid" class="invalid-feedback">
+                <div *ngIf="dateHired.errors.required">Email is required</div>
+                <div *ngIf="employeeForm.dateHired.$touched && dateHired.errors.dateHired">????</div>
+              </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" [(ngModel)]="newEmployee.isActive" name="isActve" required>
+              <input type="checkbox" class="form-check-input" [(ngModel)]="newEmployee.isActive" name="isActve"
+                     #isActive="ngModel"
+                     [ngClass]="{ 'is-invalid': isActive.invalid }"
+                     required
+              />
               <label for="isActve">Is Active *</label>
+              <div *ngIf="employeeForm.submitted && isActive.invalid" class="invalid-feedback">
+                <div *ngIf="isActive.errors.required"><p>Is Active Flag is required</p></div>
+              </div>
             </div>
           </div>
         </div>

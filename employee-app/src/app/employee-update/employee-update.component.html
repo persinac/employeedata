@@ -1,31 +1,144 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <form (ngSubmit)="updateEmployee(employeeToEdit.id, employeeToEdit)" #employeeForm="ngForm">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" [(ngModel)]="employeeToEdit.name" name="name" required>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.firstName" name="firstName" #firstName="ngModel"
+                     [ngClass]="{ 'is-invalid': email.invalid }"
+                     required
+              />
+              <div *ngIf="employeeForm.submitted && firstName.invalid" class="invalid-feedback">
+                <div *ngIf="firstName.errors.required">First name is required</div>
+              </div>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="middleInitial">Middle Initial</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.middleInitial" name="middleInitial">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.lastName" name="lastName"
+                     #lastName="ngModel"
+                     [ngClass]="{ 'is-invalid': email.invalid }"
+                     required
+              />
+              <div *ngIf="employeeForm.submitted && lastName.invalid" class="invalid-feedback">
+                <div *ngIf="lastName.errors.required">Last name is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.email"
+                     name="email" #email="ngModel"
+                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                     [ngClass]="{ 'is-invalid': email.invalid }"
+                     required />
+
+              <div *ngIf="employeeForm.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="employeeForm.email.$touched && email.errors.email">Email must be a valid email address</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.phoneNumber"
+                     name="phone" #phone="ngModel"
+                     pattern="^[0-9]+"
+                     [ngClass]="{ 'is-invalid': phone.invalid }"
+              />
+              <div *ngIf="employeeForm.submitted && phone.invalid" class="invalid-feedback">
+                <div *ngIf="phone.errors.pattern">Please only enter numbers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="addressOne">Address Line 1</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.addressOne" name="addressOne" >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="addressTwo">Address Line 2</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.addressTwo" name="addressTwo" >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.city" name="city" required>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.state" name="state" required>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="zip">Zip</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.zipCode" name="zip" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="position">Position</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.positionCategory" name="position" >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="dateHired">Date Hired *</label>
+              <input type="text" class="form-control" [(ngModel)]="employeeToEdit.dateHired"
+                     name="dateHired" #dateHired="ngModel"
+                     [ngClass]="{ 'is-invalid': email.invalid }"
+                     required
+              />
+              <div *ngIf="employeeForm.submitted && dateHired.invalid" class="invalid-feedback">
+                <div *ngIf="dateHired.errors.required">Email is required</div>
+                <div *ngIf="employeeForm.dateHired.$touched && dateHired.errors.dateHired">Please only enter numbers</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="employeeToEdit.isActive" name="isActve"
+                     #isActive="ngModel"
+                     [ngClass]="{ 'is-invalid': isActive.invalid }"
+                     required
+              />
+              <label for="isActve">Is Active *</label>
+              <div *ngIf="employeeForm.submitted && isActive.invalid" class="invalid-feedback">
+                <div *ngIf="isActive.errors.required"><p>Is Active Flag is required</p></div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" [(ngModel)]="employeeToEdit.address" name="address" required>
-        </div>
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" class="form-control" [(ngModel)]="employeeToEdit.city" name="city" required>
-        </div>
-        <!--
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="phone" class="form-control" [(ngModel)]="contact.phone" name="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" [(ngModel)]="contact.email" name="email" required>
-        </div>
-        -->
-        <div class="form-group">
-          <button type="submit" class="btn btn-success" [disabled]="!employeeForm.form.valid">Update</button>
+          <button type="submit" class="btn btn-success">Save</button>
         </div>
       </form>
     </div>

@@ -17,6 +17,8 @@ import { EmployeeUpdateComponent } from './employee-update/employee-update.compo
 import {ModalService} from "./_services";
 import { EmployeeDeleteComponent } from './employee-delete/employee-delete.component';
 import { ModalEmployeeDeleteComponent } from './modal-employee-delete/modal-employee-delete.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 
 const appRoutes: Routes = [
   {
@@ -62,7 +64,9 @@ const appRoutes: Routes = [
       appRoutes,
       {enableTracing: true} // debugging only
     ),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ReactiveFormsModule,
+    DlDateTimePickerDateModule
   ],
   providers: [ModalService],
   bootstrap: [AppComponent],

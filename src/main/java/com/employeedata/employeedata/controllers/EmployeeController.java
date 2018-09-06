@@ -92,7 +92,7 @@ public class EmployeeController {
      * @return
      */
     @DeleteMapping(value="/employees/{id}")
-    public ResponseEntity<?> deleteTodo(@PathVariable("id") String id) {
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") String id) {
         return emplRepository.findById(id)
                 .map(emp -> {
                     emplRepository.deleteById(id);
