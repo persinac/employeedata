@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
+import { ModalEmployeeDetailComponent } from "./modal-employee-detail/modal-employee-detail.component";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'employee-app';
+
+  constructor() {}
 }

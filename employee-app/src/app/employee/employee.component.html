@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Employees</h1>
+  <div id="listOfEmpls">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees">
+        <td><a [routerLink]="['/employee-detail', employee.id]">{{ employee.firstName }} {{ employee.lastName }}</a></td>
+        <td>{{ employee.addressOne }}</td>
+        <td>{{ employee.city }}</td>
+        <td>
+          <div class="btn-group" role="group">
+            <button class="btn btn-md btn-default btn-outline-primary" (click)="openUpdateEmployee(employee.id)">
+              <i class="fa fa-cog" aria-hidden="true" title="Edit"></i>
+            </button>
+            <button class="btn btn-md btn-danger btn-outline-danger" (click)="deleteSelectedEmployee(employee.id)">
+              <i class="fa fa-trash" aria-hidden="true" title="Delete"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="emplActions">
+    <button class="btn btn-lg btn-outline-primary" (click)="open()">Create New Employee</button>
+    <!--
+    <a [routerLink]="['/employee-create']" class="btn btn-default btn-lg">Create New Employee
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a>
+    -->
+  </div>
+</div>
